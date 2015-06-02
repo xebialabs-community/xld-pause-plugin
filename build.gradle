@@ -17,9 +17,9 @@ apply plugin: 'idea'
 
 
 group = 'com.xebialabs.deployit.community'
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-version = '4.5.2'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '4.5.3-SNAPSHOT'
 def apiVersion = '2014.7.4'
 def xldeployHome = "$System.env.XLDEPLOY_HOME"
 

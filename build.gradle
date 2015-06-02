@@ -14,14 +14,11 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'idea'
 
-
-
 group = 'com.xebialabs.deployit.community'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-version = '4.5.3'
+version = '4.5.4-SNAPSHOT'
 def apiVersion = '2014.7.4'
-def xldeployHome = "$System.env.XLDEPLOY_HOME"
 
 repositories {
     mavenLocal()

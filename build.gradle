@@ -19,7 +19,7 @@ apply plugin: 'idea'
 group = 'com.xebialabs.deployit.community'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-version = '4.5.3-SNAPSHOT'
+version = '4.5.3'
 def apiVersion = '2014.7.4'
 def xldeployHome = "$System.env.XLDEPLOY_HOME"
 
@@ -35,16 +35,8 @@ repositories {
     }
 }
 
-configurations {
-    compile {
-        transitive = false
-    }
-}
-
 dependencies {
     compile "com.xebialabs.deployit:udm-plugin-api:$apiVersion"
-    compile 'org.slf4j:slf4j-api:1.7.7'
-    compile 'com.google.guava:guava:16.0.1'
 }
 
 license {

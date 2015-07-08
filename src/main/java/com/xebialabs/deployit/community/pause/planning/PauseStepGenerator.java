@@ -39,7 +39,7 @@ public class PauseStepGenerator {
 	};
 
 	@Contributor
-	public void contribute(Deltas deltas, DeploymentPlanningContext context) {
+	public static void contribute(Deltas deltas, DeploymentPlanningContext context) {
 		if (all(deltas.getDeltas(), NOOP_OPERATION))
 			return;
 

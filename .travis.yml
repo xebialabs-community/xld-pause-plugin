@@ -3,7 +3,7 @@ deploy:
   provider: releases
   api_key:
     secure: dnX/CIskaIMHFl8u8xC/QbpSPDb2Oi4POqP1NWFyFdS994OAHzoQRkAyLXUuyOfoNQZwhxoETli8s8KGaud2XCB6Sgr3drDb5oyRFg7K5c32QrmWNhKROQHdA8qYui302gmJmB/8kcayqMjkF0iOfrSRqHNJeGMAHKO93JFBKio=
-  file: build/libs/xld-pause-plugin-4.5.3.jar
+  file: build/libs/xld-pause-plugin-5.0.0.jar
   on:
       all_branches: true
       tags: true

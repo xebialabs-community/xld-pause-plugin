@@ -1,39 +1,62 @@
-[![Build Status](https://travis-ci.org/NicolasGeraud/xld-pause-plugin.svg?branch=master)](https://travis-ci.org/NicolasGeraud/xld-pause-plugin)
-## Description
+# XLD Pause Plugin 
 
-An XL Deploy plugin that generate pause steps.
+[![Build Status](https://travis-ci.org/NicolasGeraud/xld-pause-plugin.svg?branch=master)](https://travis-ci.org/NicolasGeraud/xld-pause-plugin)
+
+## Preface ##
+
+This document describes the functionality provided by the XL Deploy Pause Plugin.
+
+If you are using XL Deploy 4.5+, please consider using XL Deploy's xml rules to add pause steps to the deployment plan. This is the prefered way to realise use cases that require the pausing of a deployment. Refer to [Writing Xml Rules](https://docs.xebialabs.com/xl-deploy/how-to/writing-xml-rules.html) and [Pause Step Reference](#configuration-via-xl-deploy-rules) for more details.
+
+
+## Overview ##
+
+The XLD Pause plugin allows for the automatic addition of a pause step to the deployment plan depending on the __udm.Environment__. If the plugin is enabled for the environment a pause step is added, at a predefined order, for all deployments targeted to the environment.
+
+## Features ##
+
+* Add pause step for all deployements to environment.
+* Configuration order of the step
+* Enable, disable plugin per enviroment
+* Control whether to add pause step for NOOP
+* Control whether to add pause step of undeployment
+* Ability to be used with XL Rules.
+
+## Requirements ##
+
+* **XLD Server** 4.5+
+		
 
 ## Installation
 
 Place the 'xld-pause-plugin-&lt;version&gt;.jar' file into your SERVER_HOME/plugins directory.
 
-## Configuration
-The udm.Environment ci has 2 new properties:
-* pausable (boolean)
-* pauseOrder
+## Configuration via __udm.Environment__ settings.
 
-## Usage
+The __udm.Environment__ is modified by the plugin to have the following additional properties to control its behavior:
 
-If pause property is true, the plugin will add a pause step a the given order for all deployments targeting this environment.
+| Property | Description | Default |
+|----------|-------------|---------|
+| pausable | Enable/disable plugin for the environment | false |
+| pauseOrder | Order at which to insert the pause step | 85 |
+| pauseOnNoop | Whether to add the pause step when the plan only contains NOOP operation deployeds | false |
+| pauseOnUndeploy | Whether to add the pause step when the plan only contains DESTROY operation deployeds | false |
 
-## Pause Step for the XL Rule engine. 
+## Configuration via XL Deploy Rules. 
 
-#### Description
+The plugin defines a `pause` step that can be used with XL Deploy's rule system.
 
-The `pause` step pauses the deployment plan.
+| Property | Description | Caculated |
+|----------|-------------|---------|
+| order | Order at which to insert the pause step | Yes. Defaults to 50.|
+| description | Description for the pause step. | Yes|
 
-#### Examples
+### Example
 
-This is an example of the `pause` step created with an XML rule. It pauses the plan using 70 as the `order` value
-
-    <pause>
-        <order>70</order>
-    </pause>
-
-
-This is an example of a fully-specified step created with an XML rule. It combines the order and the description attributes.
+A fully-specified step created with an XML rule.
 
     <pause>
         <description expression="true">"Pause the plan for the %s deployed " % (deployed.name)</description>
         <order>70</order>        
     </pause>
+

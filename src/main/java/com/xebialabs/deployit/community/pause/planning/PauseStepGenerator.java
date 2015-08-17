@@ -23,6 +23,8 @@ public class PauseStepGenerator {
 
 	static final String PAUSABLE_PROPERTY = "pausable";
 	static final String PAUSE_ORDER_PROPERTY = "pauseOrder";
+	static final String PAUSE_ON_NOOP = "pauseOnNoop";
+	static final String PAUSE_ON_UNDEPLOY = "pauseOnUndeploy";
 
 	static final Predicate<Delta> NOOP_OPERATION = new Predicate<Delta>() {
 		@Override
@@ -40,18 +42,30 @@ public class PauseStepGenerator {
 
 	@Contributor
 	public static void contribute(Deltas deltas, DeploymentPlanningContext context) {
-		if (all(deltas.getDeltas(), NOOP_OPERATION))
-			return;
-
-		if (all(deltas.getDeltas(), DESTROY_OPERATION))
-			return;
-
 		final Environment environment = context.getDeployedApplication().getEnvironment();
-		if (environment.hasProperty(PAUSABLE_PROPERTY) && environment.<Boolean>getProperty(PAUSABLE_PROPERTY)) {
+		if (all(deltas.getDeltas(), NOOP_OPERATION) && disabled(PAUSE_ON_NOOP, environment))
+			return;
+
+		if (all(deltas.getDeltas(), DESTROY_OPERATION) && disabled(PAUSE_ON_UNDEPLOY, environment))
+			return;
+
+		addPauseStep(environment, context);
+	}
+
+	private static void addPauseStep(final Environment environment, DeploymentPlanningContext context) {
+		if (enabled(PAUSABLE_PROPERTY, environment)) {
 			final int order = environment.<Integer>getProperty(PAUSE_ORDER_PROPERTY);
 			logger.debug("new PauseStep order {}", order);
 			context.addStep(new PauseStep(order));
 		}
+	}
+
+	private static boolean disabled(String propertyName, final Environment environment) {
+		return !enabled(propertyName, environment);
+	}
+
+	private static boolean enabled(String propertyName, final Environment environment) {
+		return environment.hasProperty(propertyName) && environment.<Boolean>getProperty(propertyName);
 	}
 
 	protected static final Logger logger = LoggerFactory.getLogger(PauseStepGenerator.class);

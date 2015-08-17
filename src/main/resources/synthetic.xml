@@ -13,6 +13,8 @@
     <type-modification type="udm.Environment">
         <property label="Pause the deployment task" name="pausable" kind="boolean" required="false" default="false" category="Pause" description="If pause property is true, the plugin will add a pause step a the given order for all deployments targeting this environment."/>
         <property name="pauseOrder" kind="integer" required="true" default="85" category="Pause"/>
+        <property name="pauseOnNoop" kind="boolean" required="false" default="false" category="Pause"/>
+        <property name="pauseOnUndeploy" kind="boolean" required="false" default="false" category="Pause"/>
     </type-modification>
 
 </synthetic>

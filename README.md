@@ -1,6 +1,6 @@
 # XLD Pause Plugin 
 
-[![Build Status](https://travis-ci.org/NicolasGeraud/xld-pause-plugin.svg?branch=master)](https://travis-ci.org/NicolasGeraud/xld-pause-plugin)
+[![Build Status](https://travis-ci.org/xebialabs-community/xld-pause-plugin.svg?branch=master)](https://travis-ci.org/xebialabs-community/xld-pause-plugin)
 
 ## Preface ##
 

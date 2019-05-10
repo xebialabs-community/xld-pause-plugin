@@ -5,9 +5,8 @@ deploy:
     secure: Bh36Ff95nQfUu5ED7VlNydKzZnqMrtPqGan7DTu2NogieEpNhbX/x7AaN+m65EfiW8t6COEIq7pA6LnZoKy4HwKsdqDWoLJSsvjuigKmMaM6J8CgT1XeGoUm3H+qH/DGEt4vXu0zQ8ZWMHscJp3E0u7TFdEhOuTshWpqhxvfwAI=
   file: build/libs/xld-pause-plugin-5.0.1.jar
   on:
-      all_branches: true
-      tags: true
+    all_branches: true
+    tags: true
 notifications:
-  hipchat:
-    rooms:
-      secure: X21FGM3dTp7qdTi1joVMmVgif41rXWYxssm44bcF8YLmzZ4xV3GSTxJgQE1+mELH7B94dcuMcRrQyTiiEQjkHarPG/StC5zN019TWHYvIWE5+o1YZ59VIXlHBBMdj7OlzkYqWwfnaT+ST3gUDDgWKqFtFZ1MVlXdT86EcwZcLME=
+  slack:
+    secure: hm+zgtleZLDPEbPLQd5+YTujKbZF66x4xfGVhFP38LfFzNRwAWiUB49UemmToAOJddewn5gQ6T3oVr2W9YbI/McGZr0SuOaUbJAHERTTaDW2YiPIplmQ/uabfHFaXGS/PLFlOUZip2OHkFh4RCZcsnPDdJExL5jcoOTzFDdtmWg=

@@ -2,7 +2,7 @@ language: java
 deploy:
   provider: releases
   api_key:
-    secure: dnX/CIskaIMHFl8u8xC/QbpSPDb2Oi4POqP1NWFyFdS994OAHzoQRkAyLXUuyOfoNQZwhxoETli8s8KGaud2XCB6Sgr3drDb5oyRFg7K5c32QrmWNhKROQHdA8qYui302gmJmB/8kcayqMjkF0iOfrSRqHNJeGMAHKO93JFBKio=
+    secure: Bh36Ff95nQfUu5ED7VlNydKzZnqMrtPqGan7DTu2NogieEpNhbX/x7AaN+m65EfiW8t6COEIq7pA6LnZoKy4HwKsdqDWoLJSsvjuigKmMaM6J8CgT1XeGoUm3H+qH/DGEt4vXu0zQ8ZWMHscJp3E0u7TFdEhOuTshWpqhxvfwAI=
   file: build/libs/xld-pause-plugin-5.0.1.jar
   on:
       all_branches: true
